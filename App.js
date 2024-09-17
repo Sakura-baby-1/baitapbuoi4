@@ -1,20 +1,20 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import React from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import MealsNavigator from './navigation/MealsNavigator'; // Đảm bảo rằng bạn đã thiết lập MealsNavigator
+import { ThemeProvider } from './context/ThemeContext'; // Đảm bảo tên và đường dẫn đúng
+import { FavoriteProvider } from './context/FavoriteContext'; // Đảm bảo rằng bạn đã thiết lập FavoriteContext
+import { LanguageProvider } from './context/LanguageContext'; // Đảm bảo đường dẫn chính xác
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <ThemeProvider>
+      <FavoriteProvider>
+        <LanguageProvider>
+          <NavigationContainer>
+            <MealsNavigator />
+          </NavigationContainer>
+        </LanguageProvider>
+      </FavoriteProvider>
+    </ThemeProvider>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
